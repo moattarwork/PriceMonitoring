@@ -60,7 +60,7 @@ export class SecurityStoreService {
   private createWebSocket() {
     this.wsSubject = this.socketFactory.create(this.apiUrl);
     this.wsSubject.subscribe(msg => this.handleNewMessage(msg),
-      err => console.log(err),
+      err => console.log(err), // TODO: Better error handling needed for the server error
       () => console.log('complete'));
   }
 
