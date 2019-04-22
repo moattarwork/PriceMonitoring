@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Security } from '../models/security';
 import { Subject } from 'rxjs';
-import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 import { ConfigService } from '@ngx-config/core';
 import { ToastrService } from 'ngx-toastr';
 import { SocketFactoryService } from './socket-factory.service';
-
-const FavoriteLengthLimit = 10;
 
 @Injectable({
   providedIn: 'root'

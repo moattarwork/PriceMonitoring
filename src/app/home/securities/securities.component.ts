@@ -1,5 +1,4 @@
-import { Security } from './../../shared/models/security';
-import { SecurityStoreService } from '../../shared/services/security-store.service';
+import { Security, SecurityStoreService } from './../../shared';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
