@@ -1,4 +1,5 @@
 export interface Security {
-    identifier: string;
+    symbol: string;
     price: number;
+    isFavorite: boolean;
 }

@@ -2,16 +2,16 @@
   <thead class="thead-light">
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Price</th>
+      <th class="text-right" scope="col">Price</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <tr *ngFor="let security of securities">
+      <td>{{security.symbol}}</td>
+      <td class="text-right">{{security.price | number:'.0-2'}}</td>
       <td class="text-right">
-        <a href="" (click)="removeFromFavoriates()">Remove</a>
+        <a class="small" [routerLink]="" (click)="removeFromFavorites(security)">Remove</a>
       </td>
     </tr>
   </tbody>

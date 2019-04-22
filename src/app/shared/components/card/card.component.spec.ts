@@ -22,4 +22,12 @@ describe('CardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should header display in the right place', () => {
+    component.header = 'Sample Header';
+    fixture.detectChanges();
+
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.card > .card-header').textContent).toContain('Sample Header');
+  });
 });

@@ -4,6 +4,7 @@ $enable-rounded: false;
 
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~ngx-toastr/toastr.css';
 
 body {
   padding-top: 5rem;

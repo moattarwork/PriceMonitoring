@@ -1,3 +1,5 @@
+import { Security } from './../../shared/models/security';
+import { SecurityService } from '../../shared/services/security.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./securities.component.scss']
 })
 export class SecuritiesComponent implements OnInit {
+  securities: Security[];
 
-  constructor() { }
+  constructor(private priceService: SecurityService) {}
 
   ngOnInit() {
+    this.priceService.securityList$.subscribe((securities: Security[]) => {
+      this.securities = securities;
+    });
   }
 
+  addToFavorites(security: Security) {
+    this.priceService.setFavoriteState(security.symbol, true);
+  }
 }
