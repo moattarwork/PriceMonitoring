@@ -1,0 +1,11 @@
+$enable-rounded: false;
+
+// Customize bootstrap variables here
+
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+body {
+  padding-top: 5rem;
+}
+
