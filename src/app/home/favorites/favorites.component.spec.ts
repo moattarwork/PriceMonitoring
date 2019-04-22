@@ -4,12 +4,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FavoritesComponent } from './favorites.component';
 import { ConfigService, ConfigLoader } from '@ngx-config/core';
 import { ToastrModule } from 'ngx-toastr';
-import { SecurityService, MockConfigService } from '../../shared';
+import { SecurityStoreService, MockConfigService } from '../../shared';
 
 describe('FavoritesComponent', () => {
   let component: FavoritesComponent;
   let fixture: ComponentFixture<FavoritesComponent>;
-  let securityService: SecurityService;
+  let securityService: SecurityStoreService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,7 +27,7 @@ describe('FavoritesComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    securityService = TestBed.get(SecurityService);
+    securityService = TestBed.get(SecurityStoreService);
   });
 
   it('should create', () => {

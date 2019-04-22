@@ -1,6 +1,6 @@
 import { Security } from './../../shared/models/security';
 import { Component, OnInit } from '@angular/core';
-import { SecurityService } from '../../shared/services/security.service';
+import { SecurityStoreService } from '../../shared/services/security-store.service';
 
 @Component({
   selector: 'app-favorites',
@@ -10,7 +10,7 @@ import { SecurityService } from '../../shared/services/security.service';
 export class FavoritesComponent implements OnInit {
   securities: Security[];
 
-  constructor(private priceService: SecurityService) { }
+  constructor(private priceService: SecurityStoreService) { }
 
   ngOnInit() {
     this.priceService.favoriteSecurityList$.subscribe((securities: Security[]) => {

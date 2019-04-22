@@ -5,12 +5,12 @@ import { SecuritiesComponent } from './securities.component';
 import { ConfigService } from '@ngx-config/core';
 import { ToastrModule } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
-import { Security, SecurityService, MockConfigService } from '../../shared';
+import { Security, SecurityStoreService, MockConfigService } from '../../shared';
 
 describe('SecuritiesComponent', () => {
   let component: SecuritiesComponent;
   let fixture: ComponentFixture<SecuritiesComponent>;
-  let securityService: SecurityService;
+  let securityService: SecurityStoreService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -26,7 +26,7 @@ describe('SecuritiesComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    securityService = TestBed.get(SecurityService);
+    securityService = TestBed.get(SecurityStoreService);
   });
 
   it('should create', () => {

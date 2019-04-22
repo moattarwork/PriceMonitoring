@@ -1,3 +1,12 @@
+import { settings } from 'cluster';
+
 export class MockConfigService {
-  getSettings = (name: string) => 'ws://localhost:8043';
+  settings = {
+    apiUrl: 'ws://localhost:8043',
+    favoriteLengthLimit: 2
+  };
+
+  getSettings = (name: string) => {
+    return this.settings[name];
+  }
 }

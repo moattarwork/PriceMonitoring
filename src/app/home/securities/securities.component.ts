@@ -1,5 +1,5 @@
 import { Security } from './../../shared/models/security';
-import { SecurityService } from '../../shared/services/security.service';
+import { SecurityStoreService } from '../../shared/services/security-store.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class SecuritiesComponent implements OnInit {
   securities: Security[];
 
-  constructor(private priceService: SecurityService) {}
+  constructor(private priceService: SecurityStoreService) {}
 
   ngOnInit() {
     this.priceService.securityList$.subscribe((securities: Security[]) => {

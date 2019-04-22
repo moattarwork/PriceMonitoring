@@ -1,3 +1,4 @@
 {
-  "apiUrl": "ws://localhost:8043"
+  "apiUrl": "ws://localhost:8043",
+  "favoriteLengthLimit": 10
 }
