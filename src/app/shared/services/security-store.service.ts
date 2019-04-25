@@ -4,6 +4,10 @@ import { Subject } from 'rxjs';
 import { ConfigService } from '@ngx-config/core';
 import { ToastrService } from 'ngx-toastr';
 import { SocketFactoryService } from './socket-factory.service';
+import { SymbolPrice } from '../models';
+
+import { map } from 'rxjs/operators';
+import { slidingWindow } from '../operators';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +60,21 @@ export class SecurityStoreService {
 
   private createWebSocket() {
     this.wsSubject = this.socketFactory.create(this.apiUrl);
-    this.wsSubject.subscribe(msg => this.handleNewMessage(msg),
+
+    // Subscribe to events
+    this.wsSubject.pipe(
+      slidingWindow(30000),
+      map((arr: SymbolPrice[]) => {
+        const current = arr[arr.length - 1];
+        const prices = arr.filter(el => el.symbol === current.symbol).map(el => el.price);
+
+        return {
+          price: current.price,
+          symbol: current.symbol,
+          averagePrice: prices.reduce((acc, curr) => acc + curr, 0) / prices.length,
+          isFavorite: false
+        }
+      })).subscribe(msg => this.handleNewMessage(msg),
       err => console.log(err), // TODO: Better error handling needed for the server error
       () => console.log('complete'));
   }

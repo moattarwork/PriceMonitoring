@@ -3,6 +3,7 @@
     <tr>
       <th scope="col">Name</th>
       <th class="text-right" scope="col">Price</th>
+      <th class="text-right" scope="col">Average Price</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -10,6 +11,7 @@
     <tr *ngFor="let security of securities">
       <td>{{security.symbol}}</td>
       <td class="text-right">{{security.price | number:'.0-2'}}</td>
+      <td class="text-right">{{security.averagePrice | number:'.0-2'}}</td>
       <td class="text-right">
         <a class="small" [routerLink]="" (click)="removeFromFavorites(security)">Remove</a>
       </td>

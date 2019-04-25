@@ -1,5 +1,3 @@
-import { settings } from 'cluster';
-
 export class MockConfigService {
   settings = {
     apiUrl: 'ws://localhost:8043',

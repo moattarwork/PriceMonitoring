@@ -35,18 +35,17 @@ describe('FavoritesComponent', () => {
   });
 
 
-  it('should display 10 rows when 10 security is available', async () => {
+  it('should display 3 rows when 3 security is available', async () => {
     const securities = [
-      { symbol: 'A', price: 2.1234, isFavorite: true },
-      { symbol: 'B', price: 3.1234, isFavorite: true },
-      { symbol: 'C', price: 4.1234, isFavorite: true },
+      { symbol: 'A', price: 2.1234, averagePrice: 4.12, isFavorite: true },
+      { symbol: 'B', price: 3.1234, averagePrice: 4.12, isFavorite: true },
+      { symbol: 'C', price: 4.1234, averagePrice: 4.12, isFavorite: true },
     ];
 
     securityService.favoriteSecurityList$.next(securities);
     fixture.detectChanges();
 
     await fixture.whenStable();
-    fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelectorAll('table.table tbody tr').length).toBe(3);
@@ -54,7 +53,7 @@ describe('FavoritesComponent', () => {
 
   it('should call set favorite from security service when add is called', async () => {
     const securities = [
-      { symbol: 'A', price: 2.1234, isFavorite: true },
+      { symbol: 'A', price: 2.1234, averagePrice: 4.12, isFavorite: true },
     ];
 
     const spy = spyOn(securityService, 'setFavoriteState');
@@ -63,7 +62,6 @@ describe('FavoritesComponent', () => {
     fixture.detectChanges();
 
     await fixture.whenStable();
-    fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;
     const anchor = compiled.querySelector('table.table tbody tr > td > a');

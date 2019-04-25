@@ -4,8 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SecuritiesComponent } from './securities.component';
 import { ConfigService } from '@ngx-config/core';
 import { ToastrModule } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
-import { Security, SecurityStoreService, MockConfigService } from '../../shared';
+import { SecurityStoreService, MockConfigService } from '../../shared';
 
 describe('SecuritiesComponent', () => {
   let component: SecuritiesComponent;
@@ -33,18 +32,17 @@ describe('SecuritiesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display 10 rows when 10 security is available', async () => {
+  it('should display 3 rows when 3 security is available', async () => {
     const securities = [
-      { symbol: 'A', price: 2.1234, isFavorite: false },
-      { symbol: 'B', price: 3.1234, isFavorite: false },
-      { symbol: 'C', price: 4.1234, isFavorite: false },
+      { symbol: 'A', price: 2.1234, averagePrice: 4.12, isFavorite: false },
+      { symbol: 'B', price: 3.1234, averagePrice: 4.12, isFavorite: false },
+      { symbol: 'C', price: 4.1234, averagePrice: 4.12, isFavorite: false },
     ];
 
     securityService.securityList$.next(securities);
     fixture.detectChanges();
 
     await fixture.whenStable();
-    fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelectorAll('table.table tbody tr').length).toBe(3);
@@ -52,7 +50,7 @@ describe('SecuritiesComponent', () => {
 
   it('should call set favorite from security service when add is called', async () => {
     const securities = [
-      { symbol: 'A', price: 2.1234, isFavorite: false },
+      { symbol: 'A', price: 2.1234, averagePrice: 4.12, isFavorite: false },
     ];
 
     const spy = spyOn(securityService, 'setFavoriteState');
@@ -61,7 +59,6 @@ describe('SecuritiesComponent', () => {
     fixture.detectChanges();
 
     await fixture.whenStable();
-    fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;
     const anchor = compiled.querySelector('table.table tbody tr > td > a');
