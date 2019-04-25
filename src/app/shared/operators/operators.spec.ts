@@ -27,7 +27,7 @@ describe('slidingWindow', () => {
     await source.toPromise();
   });
 
-  fit('should emit sliding window with each incoming event pushing some events out of window', async () => {
+  it('should emit sliding window with each incoming event pushing some events out of window', async () => {
     const array = [1, 2, 3, 4];
     const source = interval(1000).pipe(
       take(array.length),

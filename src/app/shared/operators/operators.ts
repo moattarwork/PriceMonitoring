@@ -13,7 +13,6 @@ export const slidingWindow = (ms: number) => <T>(source: Observable<T>) =>
 
       return acc.filter(x => x.timestamp > date);
     }, []),
-    tap(arr => console.log(arr)),
     map((arr: Timestamped<T>[]) => arr.map(el => el.t))
   );
 
