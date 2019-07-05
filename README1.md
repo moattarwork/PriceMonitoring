@@ -1,11 +1,7 @@
-# The algoB coding challenge (frontend)
+# Price Monitoring
 
-In this coding challenge, you have to design a simple dashboard that presents
-live prices for a list of securities.
 
-## Requirements
-
-### Frontend
+## Frontend
 
 The dashboard consists of 2 components:
 
@@ -33,9 +29,9 @@ In particular:
 The live price of each security should not flash on the screen more than once
 every second, even when data comes in more often than that for that security.
 
-### Backend
+## Backend
 
-We provide a simple node.js server that delivers data through a web-socket on
+Backend is a simple node.js server that delivers data through a web-socket on
 port 8043. Each data point is a JSON-stringified object of the following form:
 
 ```js
@@ -47,17 +43,6 @@ port 8043. Each data point is a JSON-stringified object of the following form:
 
 Prices arrive through the web-socket at random intervals between 10 and 1500 ms.
 The order in which price updates arrive is also random.
-
-## Delivery
-
-We expect the challenge to be completed as an Angular project. You can use
-another framework if you want but you'll have to bring in your own boilerplate
-code.
-
-We expect a tidy, up-to-spec interface that a user would find easy to interact
-with, but please also make sure to write high quality, well tested code and to
-document anything that you consider relevant: design decisions, corner cases,
-etc.
 
 ## Quickstart
 
